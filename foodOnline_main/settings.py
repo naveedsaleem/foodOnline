@@ -146,3 +146,11 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success',
     messages.WARNING: 'warning',
 }
+
+# Email Configuration
+EMAIL_HOST = config('EMAIL_HOST')  # Send email using gmail
+EMAIL_PORT= config('EMAIL_PORT', cast=int)  # cast=int is use to convert string into int. config function return string
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True  # This mean email sent securely
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')

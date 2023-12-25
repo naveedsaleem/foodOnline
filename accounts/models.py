@@ -84,6 +84,7 @@ class User(AbstractBaseUser):
             user_role = 'Customer'
         return user_role
 
+
 class UserProfile(models.Model):
 
     user = OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
