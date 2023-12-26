@@ -11,10 +11,10 @@ from django.conf import settings
 # Check the user type
 def detectUser(user):
     if user.role == 1:
-        redirectUrl = 'vendordashboard'
+        redirectUrl = 'vendorDashboard'
         return redirectUrl
     elif user.role == 2:
-        redirectUrl = 'custdashboard'
+        redirectUrl = 'custDashboard'
         return redirectUrl
     elif user.role == None and user.is_superadmin:
         redirectUrl = '/admin'
@@ -33,5 +33,12 @@ def send_verification_email(request, user, email_subject, email_template):
         'token': default_token_generator.make_token(user),
     })
     to_email = user.email
+    mail = EmailMessage(email_subject, message, from_email, to=[to_email])
+    mail.send()
+
+def send_notification(email_subject, email_template, context):
+    from_email = settings.DEFAULT_FROM_EMAIL
+    message = render_to_string(email_template, context)
+    to_email = context['user'].email
     mail = EmailMessage(email_subject, message, from_email, to=[to_email])
     mail.send()
