@@ -69,27 +69,34 @@
         x.innerHTML = "Geolocation is not supported by this browser.";
         }
     }
-    
+
     function showPosition(position) {
-        var lat = position.coords.latitude
-        var lng = position.coords.longitude
 
-        // var lat = '19.0713949'
-        // var lng = '72.9984126'
+        // Get Dynamic location using google map with google api
+<!--        var lat = position.coords.latitude-->
+<!--        var lng = position.coords.longitude-->
 
-        // hit AJAX request to googlemaps api endpoint and get the location data using those lat and lng
-        var GOOGLE_API_KEY = "{{ GOOGLE_API_KEY }}"
-        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"+&key="+GOOGLE_API_KEY
-        
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function(response){
-                var current_location = response.results[0].formatted_address
-                x.value = current_location
-                sessionStorage.setItem("current_location", current_location)
-                window.location = '?lat='+lat+'&lng='+lng
-            }
-        })
+<!--        // hit AJAX request to googlemaps api endpoint and get the location data using those lat and lng-->
+<!--        var GOOGLE_API_KEY = "{{ GOOGLE_API_KEY }}"-->
+<!--        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"+&key="+GOOGLE_API_KEY-->
+<!--        -->
+<!--        $.ajax({-->
+<!--            url: url,-->
+<!--            type: "GET",-->
+<!--            success: function(response){-->
+<!--                var current_location = response.results[0].formatted_address-->
+<!--                x.value = current_location-->
+<!--                sessionStorage.setItem("current_location", current_location)-->
+<!--                window.location = '?lat='+lat+'&lng='+lng-->
+<!--            }-->
+<!--        })-->
+
+        // Static location of whitehouse school
+        var lat = '40.61510819108779';
+        var lng = '-74.75951171717584';
+        var current_location = '50 Whitehouse Ave, Whitehouse Station, NJ 08889, USA';
+        x.value = current_location
+        sessionStorage.setItem("current_location", current_location)
+        window.location = '?lat='+lat+'&lng='+lng
     }
     </script>
